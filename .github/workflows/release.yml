@@ -40,6 +40,35 @@ jobs:
         run: |
           ps2ui-check build/ui.uib
 
+      - name: Generate All Screens Montage
+        run: |
+          python -c "
+          from ps2ui_bake import uib, preview
+          from PIL import Image, ImageDraw
+
+          f = uib.read_uib('build/ui.uib')
+          screens = f.screens
+          cols = 3
+          rows = 2
+          w, h = f.canvas_w, f.canvas_h
+          gap = 16
+          header_h = 24
+
+          sheet = Image.new('RGB', (cols * w + (cols + 1) * gap, rows * (h + header_h) + (rows + 1) * gap), (20, 24, 32))
+          d = ImageDraw.Draw(sheet)
+
+          for i, s in enumerate(screens):
+              img = preview.render(f, screen=i)
+              col = i % cols
+              row = i // cols
+              x = gap + col * (w + gap)
+              y = gap + row * (h + header_h + gap)
+              d.text((x + 8, y + 4), f'SCREEN {i+1}: {s[\"name\"].upper()}', fill=(180, 200, 220))
+              sheet.paste(img, (x, y + header_h))
+
+          sheet.save('build/screens.png')
+          "
+
       - name: Create Release & Upload Artifacts
         uses: softprops/action-gh-release@v2
         with:
@@ -51,5 +80,6 @@ jobs:
           files: |
             build/ui.uib
             build/preview.png
+            build/screens.png
             build/states.png
             PSBBN_MIGRATION_GUIDE.md
