@@ -1,0 +1,55 @@
+name: Build PS2 UI & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Pillow & OPHTML Baker
+        run: |
+          python -m pip install --upgrade pip
+          git clone https://github.com/coffeedevsolutions/OPHTML.git /tmp/ophtml
+          pip install -e /tmp/ophtml/packages/baker
+
+      - name: Compile PS2 UI Blob
+        run: |
+          ps2ui build ps2ui.json
+
+      - name: Validate PS2 UI Blob (Strict Mode)
+        run: |
+          ps2ui-check build/ui.uib
+
+      - name: Create Release & Upload Artifacts
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: "PS2 Clean Dashboard ${{ github.ref_name }}"
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            build/ui.uib
+            build/preview.png
+            build/states.png
+            PSBBN_MIGRATION_GUIDE.md

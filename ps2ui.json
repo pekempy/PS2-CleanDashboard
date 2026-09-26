@@ -1,0 +1,16 @@
+{
+  "screens": [
+    "ui/home.html",
+    "ui/ps2.html",
+    "ui/psx.html",
+    "ui/tools.html",
+    "ui/memcard.html",
+    "ui/detail.html"
+  ],
+  "css": "ui/dashboard.css",
+  "strict": true,
+  "minFontSize": 11,
+  "focusWrap": true,
+  "preview": "build/preview.png",
+  "montage": "build/states.png"
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<body>
+<div class="screen">
+
+  <div class="sidebar">
+    <div class="brand">
+      <h1>PS2</h1>
+      <p class="sub">DASHBOARD</p>
+    </div>
+    <div class="nav">
+      <div class="nav-btn" id="nav-home" focusable>
+        <p class="nav-label">Home</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn" id="nav-ps2" focusable>
+        <p class="nav-label">PS2 Games</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn" id="nav-psx" focusable>
+        <p class="nav-label">PSX Games</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn" id="nav-tools" focusable>
+        <p class="nav-label">Tools</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn" id="nav-memcard" focusable>
+        <p class="nav-label">Memory Card</p>
+        <div class="nav-dot"></div>
+      </div>
+    </div>
+    <div class="sidebar-spacer"></div>
+    <div class="card-info">
+      <p class="card-info-h">SLOT 1</p>
+      <p class="card-info-v">8 MB · 61 free</p>
+    </div>
+    <div class="net-info">
+      <p class="net-info-h">FTP SERVER</p>
+      <p class="net-info-v" data-slot="detail-net-ip" data-slot-capacity="22">192.168.1.150:21</p>
+      <p class="net-info-sub" data-slot="detail-net-user" data-slot-capacity="22">user: ps2 / anon</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h2>GAME DETAILS</h2>
+    </div>
+
+    <img class="detail-bg" src="assets/fanart-mock.png" palettize>
+
+    <div class="detail-body">
+      <img class="detail-art" src="assets/cover-ps2-1.png" palettize>
+      <div class="detail-info">
+        <div class="detail-title-row">
+          <p class="detail-title" data-slot="detail-title" data-slot-capacity="40">Title of a Game</p>
+          <p class="tag tag-ps2" data-slot="detail-tag" data-slot-capacity="4">PS2</p>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <p class="field-k">Publisher</p>
+            <p class="field-v" data-slot="detail-publisher" data-slot-capacity="28">Studio Name</p>
+          </div>
+          <div class="field">
+            <p class="field-k">Developer</p>
+            <p class="field-v" data-slot="detail-developer" data-slot-capacity="28">Studio Name</p>
+          </div>
+          <div class="field">
+            <p class="field-k">Released</p>
+            <p class="field-v" data-slot="detail-year" data-slot-capacity="12">2004</p>
+          </div>
+          <div class="field">
+            <p class="field-k">Genre</p>
+            <p class="field-v" data-slot="detail-genre" data-slot-capacity="24">Action</p>
+          </div>
+          <div class="field">
+            <p class="field-k">Players</p>
+            <p class="field-v" data-slot="detail-players" data-slot-capacity="12">1-2</p>
+          </div>
+          <div class="field">
+            <p class="field-k">Size</p>
+            <p class="field-v" data-slot="detail-size" data-slot-capacity="12">4.3 GB</p>
+          </div>
+        </div>
+        <p class="blurb" data-slot="detail-blurb" data-slot-capacity="120">A short description of the game goes here, pulled from the library's metadata.</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <p class="action" id="act-launch" focusable autofocus>&#9675; LAUNCH</p>
+      <p class="action" id="act-delete" focusable>&#10005; DELETE</p>
+      <p class="action" id="act-back" focusable>&#9651; BACK</p>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

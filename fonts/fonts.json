@@ -1,0 +1,14 @@
+{
+  "regular": {
+    "ttf": [
+      "/home/glados/Documents/05_Modding/ps2-homescreen/fonts/DejaVuSans.ttf"
+    ],
+    "metrics": "default.metrics.json"
+  },
+  "bold": {
+    "ttf": [
+      "/home/glados/Documents/05_Modding/ps2-homescreen/fonts/DejaVuSans-Bold.ttf"
+    ],
+    "metrics": "default-bold.metrics.json"
+  }
+}

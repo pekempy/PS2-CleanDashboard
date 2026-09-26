@@ -1,0 +1,505 @@
+/* PS2 Home Screen Dashboard -- shared stylesheet for every screen.
+ * Flat surfaces, 1-2px borders, no gradients (the format has none to
+ * give). Every colour is a named role so @theme can swap the whole
+ * palette by moving one table; nothing below this block names a hex
+ * value directly. */
+
+:root {
+  --bg-page: #090c12;
+  --bg-sidebar: #0b0e16;
+  --bg-panel: #10141d;
+  --bg-tile: #10141f;
+  --bg-chip: #141a26;
+  --bg-focus: #182238;
+  --edge: #1c2331;
+  --edge-soft: #161b27;
+  --accent: #6e93df;
+  --accent-edge: #9cb6ec;
+  --ink-on-accent: #090c12;
+  --ink-title: #f1f4fa;
+  --ink-strong: #d7deec;
+  --ink-muted: #8891a5;
+  --ink-dim: #656e82;
+  --ink-max: #ffffff;
+  --tag-ps2: #6e93df;
+  --tag-ps2-bg: #182238;
+  --tag-psx: #c08de0;
+  --tag-psx-bg: #241c38;
+  --tag-tool: #63c095;
+  --tag-tool-bg: #113023;
+  --tag-card: #e0b96e;
+  --tag-card-bg: #332810;
+}
+
+/* The same 22 roles, moved. A light theme swapped at runtime with
+ * ps2ui_theme_set -- no rebuild, no second asset set. */
+@theme light {
+  --bg-page: #f3f5fa;
+  --bg-sidebar: #ffffff;
+  --bg-panel: #ffffff;
+  --bg-tile: #eef1f7;
+  --bg-chip: #e6eaf2;
+  --bg-focus: #d5e2f8;
+  --edge: #c6cedd;
+  --edge-soft: #dbe1ea;
+  --accent: #2f5fc0;
+  --accent-edge: #1e4a9e;
+  --ink-on-accent: #ffffff;
+  --ink-title: #101623;
+  --ink-strong: #1d2536;
+  --ink-muted: #5a6478;
+  --ink-dim: #767f92;
+  --ink-max: #000000;
+  --tag-ps2: #2f5fc0;
+  --tag-ps2-bg: #dbe6fa;
+  --tag-psx: #8231b8;
+  --tag-psx-bg: #ecdcf7;
+  --tag-tool: #1f7a4d;
+  --tag-tool-bg: #d9f0e4;
+  --tag-card: #9a6a12;
+  --tag-card-bg: #f5e7c8;
+}
+
+/* ============================================================ shell */
+
+.screen {
+  flex-direction: row;
+  background: var(--bg-page);
+  padding: 22px 22px 18px;
+  gap: 14px;
+}
+
+/* -------------------------------------------------------- sidebar */
+
+.sidebar {
+  flex-direction: column;
+  width: 142px;
+  background: var(--bg-sidebar);
+  border: 2px solid var(--edge-soft);
+  border-radius: 8px;
+  padding: 12px 10px;
+  gap: 8px;
+}
+
+.brand { flex-direction: column; gap: 1px; }
+
+.brand h1 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--ink-title);
+  letter-spacing: 2px;
+}
+
+.brand .sub {
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: 1px;
+}
+
+.nav { flex-direction: column; gap: 4px; }
+
+.nav-btn {
+  flex-direction: row;
+  align-items: center;
+  background: var(--bg-chip);
+  border: 2px solid var(--edge);
+  border-radius: 6px;
+  padding: 6px 8px;
+  gap: 5px;
+}
+
+.nav-btn:focus { background: var(--bg-focus); border-color: var(--accent); }
+
+.nav-label {
+  font-size: 13px; color: var(--ink-strong); flex-grow: 1;
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+.nav-btn:focus .nav-label { color: var(--ink-max); }
+
+.nav-btn.active { border-color: var(--accent-edge); }
+.nav-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: var(--ink-dim);
+}
+.nav-btn.active .nav-dot { background: var(--accent); }
+
+.sidebar-spacer { flex-grow: 1; }
+
+.card-info {
+  flex-direction: column;
+  background: var(--bg-tile);
+  border: 2px solid var(--edge-soft);
+  border-radius: 6px;
+  padding: 4px 6px;
+  gap: 1px;
+}
+
+.card-info-h { font-size: 11px; color: var(--ink-dim); letter-spacing: 1px; }
+.card-info-v {
+  font-size: 11px; color: var(--ink-strong);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+.net-info {
+  flex-direction: column;
+  background: var(--bg-tile);
+  border: 2px solid var(--edge-soft);
+  border-radius: 6px;
+  padding: 4px 6px;
+  gap: 1px;
+}
+
+.net-info-h { font-size: 11px; color: var(--tag-tool); letter-spacing: 1px; }
+.net-info-v {
+  font-size: 11px; color: var(--ink-strong);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+.net-info-sub {
+  font-size: 11px; color: var(--ink-dim);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+/* ------------------------------------------------------------- main */
+
+.main { flex-direction: column; flex-grow: 1; gap: 6px; }
+
+.header { flex-direction: row; align-items: center; justify-content: space-between; }
+
+.header-text { flex-direction: column; gap: 2px; }
+
+.main h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--ink-title);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.header-sub { font-size: 12px; color: var(--ink-muted); }
+.count {
+  font-size: 12px; color: var(--ink-muted);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+/* filter chips (ps2 / psx library screens) */
+
+.filters { flex-direction: row; gap: 8px; }
+
+.chip {
+  background: var(--bg-chip);
+  border: 2px solid var(--edge);
+  border-radius: 14px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.chip:focus { background: var(--bg-focus); border-color: var(--accent); color: var(--ink-max); }
+
+/* tag pills -- category identity, reused on rows and the detail screen */
+
+.tag {
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.tag-ps2 { background: var(--tag-ps2-bg); color: var(--tag-ps2); }
+.tag-psx { background: var(--tag-psx-bg); color: var(--tag-psx); }
+.tag-tool { background: var(--tag-tool-bg); color: var(--tag-tool); }
+.tag-card { background: var(--tag-card-bg); color: var(--tag-card); }
+
+/* ------------------------------------------------------------ footer */
+
+.footer { flex-direction: row; gap: 18px; }
+.hint { font-size: 12px; color: var(--ink-dim); }
+
+/* ======================================================= home screen */
+
+.stat-row { flex-direction: row; gap: 10px; }
+
+.stat-card {
+  flex-direction: column;
+  flex-grow: 1;
+  background: var(--bg-panel);
+  border: 2px solid var(--edge-soft);
+  border-radius: 8px;
+  padding: 12px 14px;
+  gap: 2px;
+}
+
+.stat-value {
+  font-size: 24px; font-weight: bold; color: var(--ink-title);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+.stat-label { font-size: 11px; color: var(--ink-dim); letter-spacing: 1px; }
+
+.section-h {
+  font-size: 11px;
+  color: var(--ink-dim);
+  letter-spacing: 2px;
+}
+
+.resume-row { flex-direction: row; gap: 8px; }
+
+.resume-card {
+  flex-direction: column;
+  align-items: center;
+  width: 96px;
+  background: var(--bg-panel);
+  border: 2px solid var(--edge-soft);
+  border-radius: 6px;
+  padding: 3px 3px 4px;
+  gap: 2px;
+}
+
+.resume-card:focus { background: var(--bg-focus); border-color: var(--accent); }
+
+.resume-art { width: 86px; height: 112px; border-radius: 4px; }
+
+.resume-titles {
+  flex-direction: column;
+  width: 86px;
+  gap: 1px;
+}
+
+.resume-title-l1,
+.resume-title-l2 {
+  font-size: 11px;
+  color: var(--ink-strong);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+}
+
+.resume-card:focus .resume-title-l1,
+.resume-card:focus .resume-title-l2 { color: var(--ink-max); }
+
+.resume-sub {
+  font-size: 11px;
+  color: var(--ink-dim);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* ==================================================== alphabet jumplist */
+
+.alphabet {
+  flex-direction: row;
+  align-items: center;
+  gap: 3px;
+}
+
+.alpha-chip {
+  font-size: 11px;
+  color: var(--ink-dim);
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: var(--bg-chip);
+  border: 2px solid var(--edge);
+  text-align: center;
+}
+
+.alpha-chip:focus {
+  background: var(--bg-focus);
+  border-color: var(--accent);
+  color: var(--ink-max);
+}
+
+.alpha-chip.active {
+  color: var(--accent);
+  border-color: var(--accent-edge);
+}
+
+/* ========================================================= game grid */
+
+.game-grid {
+  flex-direction: column;
+  gap: 5px;
+}
+
+.grid-row {
+  flex-direction: row;
+  gap: 8px;
+}
+
+.game-card {
+  flex-direction: column;
+  align-items: center;
+  width: 94px;
+  background: var(--bg-panel);
+  border: 2px solid var(--edge-soft);
+  border-radius: 6px;
+  padding: 3px 3px 3px;
+  gap: 2px;
+}
+
+.game-card:focus {
+  background: var(--bg-focus);
+  border-color: var(--accent);
+}
+
+.card-art-ps2 {
+  width: 86px;
+  height: 112px;
+  border-radius: 4px;
+}
+
+.card-art-psx {
+  width: 86px;
+  height: 86px;
+  border-radius: 4px;
+}
+
+.card-titles {
+  flex-direction: column;
+  width: 86px;
+  gap: 1px;
+}
+
+.card-title-l1,
+.card-title-l2 {
+  font-size: 11px;
+  color: var(--ink-strong);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+}
+
+.game-card:focus .card-title-l1,
+.game-card:focus .card-title-l2 {
+  color: var(--ink-max);
+}
+
+/* ==================================================== library rows */
+/* Shared fallback rows: streamed cover thumb, title + subtitle, tag, size */
+
+.rows { flex-direction: column; gap: 2px; }
+
+.row {
+  flex-direction: row;
+  align-items: center;
+  background: var(--bg-tile);
+  border: 2px solid var(--edge-soft);
+  border-radius: 3px;
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.row:focus { background: var(--bg-focus); border-color: var(--accent); }
+
+.row-art-ps2 { width: 23px; height: 32px; border-radius: 3px; }
+.row-art-psx { width: 30px; height: 30px; border-radius: 3px; }
+
+.row-meta { flex-direction: column; flex-grow: 1; gap: 1px; }
+
+.row-title {
+  font-size: 14px; color: var(--ink-strong);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+.row:focus .row-title { color: var(--ink-max); }
+.row-sub {
+  font-size: 11px; color: var(--ink-dim);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+.row-size {
+  font-size: 12px; color: var(--ink-muted); width: 52px; text-align: right;
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+/* ============================================================ tools */
+
+.tool-icon {
+  width: 32px; height: 32px; border-radius: 4px;
+  align-items: center; justify-content: center;
+  background: var(--tag-tool-bg);
+}
+
+.tool-icon-label { font-size: 12px; font-weight: bold; color: var(--tag-tool); }
+
+.tool-name {
+  font-size: 13px; color: var(--ink-strong);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+.row:focus .tool-name { color: var(--ink-max); }
+.tool-desc {
+  font-size: 11px; color: var(--ink-dim);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+/* ========================================================= memcard */
+
+.savelist { flex-direction: column; gap: 4px; }
+
+.save-icon {
+  width: 32px; height: 32px; border-radius: 4px;
+  align-items: center; justify-content: center;
+  background: var(--tag-card-bg);
+}
+
+.save-icon-label { font-size: 11px; font-weight: bold; color: var(--tag-card); }
+
+.save-title {
+  font-size: 13px; color: var(--ink-strong);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+.row:focus .save-title { color: var(--ink-max); }
+.save-meta {
+  font-size: 11px; color: var(--ink-dim);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+.save-blocks {
+  font-size: 12px; color: var(--ink-muted); width: 68px; text-align: right;
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+/* =========================================================== detail */
+
+.detail-bg { width: 390px; height: 76px; border-radius: 6px; }
+
+.detail-body { flex-direction: row; gap: 22px; flex-grow: 1; }
+
+.detail-art { width: 86px; height: 112px; border-radius: 4px; }
+
+.detail-info { flex-direction: column; flex-grow: 1; gap: 10px; }
+
+.detail-title-row { flex-direction: row; align-items: center; gap: 10px; }
+
+.detail-title {
+  font-size: 22px; font-weight: bold; color: var(--ink-title);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+.fields { flex-direction: column; gap: 3px; }
+
+.field { flex-direction: row; gap: 10px; }
+.field-k { font-size: 12px; color: var(--ink-dim); width: 92px; }
+.field-v {
+  font-size: 12px; color: var(--ink-strong);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+.blurb {
+  font-size: 12px; color: var(--ink-muted);
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+}
+
+.actions { flex-direction: row; gap: 10px; }
+
+.action {
+  background: var(--bg-chip);
+  border: 2px solid var(--edge);
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-size: 13px;
+  color: var(--ink-strong);
+}
+
+.action:focus { background: var(--accent); border-color: var(--accent-edge); color: var(--ink-on-accent); }

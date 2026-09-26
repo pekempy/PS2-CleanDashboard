@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<body>
+<div class="screen">
+
+  <div class="sidebar">
+    <div class="brand">
+      <h1>PS2</h1>
+      <p class="sub">DASHBOARD</p>
+    </div>
+    <div class="nav">
+      <div class="nav-btn" id="nav-home" focusable>
+        <p class="nav-label">Home</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn" id="nav-ps2" focusable>
+        <p class="nav-label">PS2 Games</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn active" id="nav-psx" focusable autofocus>
+        <p class="nav-label">PSX Games</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn" id="nav-tools" focusable>
+        <p class="nav-label">Tools</p>
+        <div class="nav-dot"></div>
+      </div>
+      <div class="nav-btn" id="nav-memcard" focusable>
+        <p class="nav-label">Memory Card</p>
+        <div class="nav-dot"></div>
+      </div>
+    </div>
+    <div class="sidebar-spacer"></div>
+    <div class="card-info">
+      <p class="card-info-h">SLOT 1</p>
+      <p class="card-info-v">8 MB · 61 free</p>
+    </div>
+    <div class="net-info">
+      <p class="net-info-h">FTP SERVER</p>
+      <p class="net-info-v" data-slot="psx-net-ip" data-slot-capacity="22">192.168.1.150:21</p>
+      <p class="net-info-sub" data-slot="psx-net-user" data-slot-capacity="22">user: ps2 / anon</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h2>PSX GAMES</h2>
+      <p class="count" data-slot="psx-count" data-slot-capacity="16">64 titles</p>
+    </div>
+
+    <div class="alphabet">
+      <p class="alpha-chip active" id="psx-a-all" focusable>ALL</p>
+      <p class="alpha-chip" id="psx-a-num" focusable>#</p>
+      <p class="alpha-chip" id="psx-a-ac" focusable>A-C</p>
+      <p class="alpha-chip" id="psx-a-df" focusable>D-F</p>
+      <p class="alpha-chip" id="psx-a-gi" focusable>G-I</p>
+      <p class="alpha-chip" id="psx-a-jl" focusable>J-L</p>
+      <p class="alpha-chip" id="psx-a-mo" focusable>M-O</p>
+      <p class="alpha-chip" id="psx-a-pr" focusable>P-R</p>
+      <p class="alpha-chip" id="psx-a-su" focusable>S-U</p>
+      <p class="alpha-chip" id="psx-a-vz" focusable>V-Z</p>
+    </div>
+
+    <div class="game-grid">
+      <div class="grid-row">
+        <div class="game-card" id="psx-c-0" focusable autofocus>
+          <img class="card-art-psx" src="assets/cover-psx-2.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-0-t1" data-slot-capacity="16">Castlevania</p>
+            <p class="card-title-l2" data-slot="psx-c-0-t2" data-slot-capacity="16">SOTN</p>
+          </div>
+        </div>
+        <div class="game-card" id="psx-c-1" focusable>
+          <img class="card-art-psx" src="assets/cover-psx-3.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-1-t1" data-slot-capacity="16">Crash</p>
+            <p class="card-title-l2" data-slot="psx-c-1-t2" data-slot-capacity="16">Bandicoot 3</p>
+          </div>
+        </div>
+        <div class="game-card" id="psx-c-2" focusable>
+          <img class="card-art-psx" src="assets/cover-psx-2.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-2-t1" data-slot-capacity="16">Crash Team</p>
+            <p class="card-title-l2" data-slot="psx-c-2-t2" data-slot-capacity="16">Racing</p>
+          </div>
+        </div>
+        <div class="game-card" id="psx-c-3" focusable>
+          <img class="card-art-psx" src="assets/cover-psx-1.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-3-t1" data-slot-capacity="16">Final Fantasy</p>
+            <p class="card-title-l2" data-slot="psx-c-3-t2" data-slot-capacity="16">VII</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid-row">
+        <div class="game-card" id="psx-c-4" focusable>
+          <img class="card-art-psx" src="assets/cover-psx-1.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-4-t1" data-slot-capacity="16">Metal Gear</p>
+            <p class="card-title-l2" data-slot="psx-c-4-t2" data-slot-capacity="16">Solid</p>
+          </div>
+        </div>
+        <div class="game-card" id="psx-c-5" focusable>
+          <img class="card-art-psx" src="assets/cover-psx-3.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-5-t1" data-slot-capacity="16">Resident Evil</p>
+            <p class="card-title-l2" data-slot="psx-c-5-t2" data-slot-capacity="16">2</p>
+          </div>
+        </div>
+        <div class="game-card" id="psx-c-6" focusable>
+          <img class="card-art-psx" src="assets/cover-psx-4.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-6-t1" data-slot-capacity="16">Spyro the</p>
+            <p class="card-title-l2" data-slot="psx-c-6-t2" data-slot-capacity="16">Dragon</p>
+          </div>
+        </div>
+        <div class="game-card" id="psx-c-7" focusable>
+          <img class="card-art-psx" src="assets/cover-psx-4.png" palettize>
+          <div class="card-titles">
+            <p class="card-title-l1" data-slot="psx-c-7-t1" data-slot-capacity="16">Tekken 3</p>
+            <p class="card-title-l2" data-slot="psx-c-7-t2" data-slot-capacity="16">-</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="hint">&#9675; LAUNCH</p>
+      <p class="hint">&#9651; DETAILS</p>
+      <p class="hint">&#10005; BACK</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
